@@ -76,7 +76,7 @@ public class Main {
         int numElements = m * k;
         int rem = numElements % numTreads;
         int numElementsInThread = numElements / numTreads;
-        MultiplyTread[] arrElem = new MultiplyTread[numElementsInThread];
+        MultiplyTread[] arrElem = new MultiplyTread[numTreads];
         for (int i = 0; i < numTreads; i++) {
             int start = i * numElementsInThread;
             int end = start + numElementsInThread;
@@ -85,11 +85,11 @@ public class Main {
             threads[i] = new Thread(arrElem[i]);
             threads[i].start();
         }
-        for (int i = 0; i < rem; i++) {
+
             int start = numElements - rem;
             MultiplyTread multThread = new MultiplyTread(a, b, c, start, numElements);
             multThread.run();
-        }
+
         for (int i = 0; i < numTreads; i++) {
             try {
                 threads[i].join();
