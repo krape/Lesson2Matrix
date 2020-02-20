@@ -26,6 +26,5 @@ public class MultiplyTread implements Runnable {
             }
             c[i][j] = sum;
         }
-
     }
 }
